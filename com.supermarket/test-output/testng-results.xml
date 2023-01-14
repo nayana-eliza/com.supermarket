@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="79864" started-at="2023-01-12T16:10:38Z" finished-at="2023-01-12T16:11:57Z">
+    <groups>
+      <group name="sanity">
+        <method signature="HomeTest.home()[pri:0, instance:com.supermarket.tests.HomeTest@6536e911]" name="home" class="com.supermarket.tests.HomeTest"/>
+        <method signature="LoginTest.loginwithValidCredentials()[pri:0, instance:com.supermarket.tests.LoginTest@6b09bb57]" name="loginwithValidCredentials" class="com.supermarket.tests.LoginTest"/>
+      </group> <!-- sanity -->
+    </groups>
+    <test name="Test" duration-ms="79864" started-at="2023-01-12T16:10:38Z" finished-at="2023-01-12T16:11:57Z">
+      <class name="com.supermarket.tests.HomeTest">
+        <test-method status="PASS" signature="beforeClass(java.lang.String)[pri:0, instance:com.supermarket.tests.HomeTest@6536e911]" name="beforeClass" is-config="true" duration-ms="39916" started-at="2023-01-12T21:41:12Z" finished-at="2023-01-12T21:41:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="home()[pri:0, instance:com.supermarket.tests.HomeTest@6536e911]" name="home" duration-ms="5021" started-at="2023-01-12T21:41:52Z" finished-at="2023-01-12T21:41:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- home -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.supermarket.tests.HomeTest@6536e911]" name="afterMethod" is-config="true" duration-ms="0" started-at="2023-01-12T21:41:57Z" finished-at="2023-01-12T21:41:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=home status=SUCCESS method=HomeTest.home()[pri:0, instance:com.supermarket.tests.HomeTest@6536e911] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.supermarket.tests.HomeTest -->
+      <class name="com.supermarket.tests.LoginTest">
+        <test-method status="PASS" signature="beforeClass(java.lang.String)[pri:0, instance:com.supermarket.tests.LoginTest@6b09bb57]" name="beforeClass" is-config="true" duration-ms="26092" started-at="2023-01-12T21:40:38Z" finished-at="2023-01-12T21:41:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="loginwithValidCredentials()[pri:0, instance:com.supermarket.tests.LoginTest@6b09bb57]" name="loginwithValidCredentials" duration-ms="8728" started-at="2023-01-12T21:41:04Z" finished-at="2023-01-12T21:41:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginwithValidCredentials -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.supermarket.tests.LoginTest@6b09bb57]" name="afterMethod" is-config="true" duration-ms="2" started-at="2023-01-12T21:41:12Z" finished-at="2023-01-12T21:41:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginwithValidCredentials status=SUCCESS method=LoginTest.loginwithValidCredentials()[pri:0, instance:com.supermarket.tests.LoginTest@6b09bb57] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.supermarket.tests.LoginTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

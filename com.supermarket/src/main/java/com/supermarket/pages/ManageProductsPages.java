@@ -27,9 +27,10 @@ public class ManageProductsPages {
 	
 	
 
-	public  ManageProductsPages(WebDriver driver) {                 //constructor
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
+	public  ManageProductsPages(WebDriver driver) 
+	{                 //constructor
+	this.driver=driver;
+	PageFactory.initElements(driver, this);
 	}
 	
 	@FindBy(xpath="//input[@name='username']")
@@ -59,15 +60,17 @@ public class ManageProductsPages {
 	
 
 	
-	public boolean isDisplayedValue( ) {
-		boolean Display =dashboard.isDisplayed();
-		return Display;
+	public boolean isDisplayedValue( ) 
+	{
+	boolean Display =dashboard.isDisplayed();
+	return Display;
 	}
 	
 	
-	public boolean isDisplayed1() {
-		boolean value=guobj1.isDisplayedCommand(ListProducts);
-		return value;
+	public boolean isDisplayed1() 
+	{
+	boolean value=guobj1.isDisplayedCommand(ListProducts);
+	return value;
 	}
 	 
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[9]//i[@class='fas fa-edit']")
@@ -84,58 +87,57 @@ public class ManageProductsPages {
 	
 	public void clickEdit() throws AWTException
 	{
-		MPEdit.click();
-		Titleinput.clear();
-		Titleinput.sendKeys("Non-Veg Puffs");
-		Robot robot = new Robot();
-		robot.delay(250);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.delay(250);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		Assert.assertTrue(succesfullyUpdated.isDisplayed(),"Test Passed for Product edit button");
-		
+	MPEdit.click();
+	Titleinput.clear();
+	Titleinput.sendKeys("Non-Veg Puffs");
+	guobj1.enterKey();
+	Assert.assertTrue(succesfullyUpdated.isDisplayed(),"Test Passed for Product edit button");	
 	}
 	
 	
 	public boolean isEnabled()
 	{
-		boolean value= MPStockYes.isEnabled();
-		return value;
+	boolean value= MPStockYes.isEnabled();
+	return value;
 	}
 	
 	public boolean isEnabledstockStaus()
 	{
-		boolean value= MPStockUnlimited.isEnabled();
-		return value;
+	boolean value= MPStockUnlimited.isEnabled();
+	return value;
 	}
 	
 	public void stock() throws InterruptedException
 	{
-		if(MPStockYes.isDisplayed()) {
-			MPStockYes.click();	
-			Thread.sleep(5000);
-			MPStockNo.click();
-			Assert.assertEquals(MPStockYes.getText(), "Yes");
-		}
-		else if(MPStockNo.isDisplayed())
-		{MPStockNo.click();
-		MPStockYes.click();	
-		Assert.assertEquals(MPStockNo.getText(), "No");
+	if(MPStockYes.isDisplayed()) 
+	{
+	MPStockYes.click();	
+	Thread.sleep(5000);
+	MPStockNo.click();
+	Assert.assertEquals(MPStockYes.getText(), "Yes");
+	}
+	else if(MPStockNo.isDisplayed())
+	{
+	MPStockNo.click();
+	MPStockYes.click();	
+	Assert.assertEquals(MPStockNo.getText(), "No");
 	}}
 	
 	public void stockstatus() throws InterruptedException
 	{
-	if(MPStockUnlimited.isDisplayed()) {
-		MPStockUnlimited.click();
-		Thread.sleep(5000);
-		MPStocklimited.click();
-		Assert.assertEquals(MPStockUnlimited.getText(), "Unlimited");
+	if(MPStockUnlimited.isDisplayed()) 
+	{
+	MPStockUnlimited.click();
+	wait.eWToBeClickableCommand(driver, MPStocklimited);
+	MPStocklimited.click();
+	Assert.assertEquals(MPStockUnlimited.getText(), "Unlimited");
 	}
-	else if(MPStocklimited.isDisplayed()) {
-		MPStocklimited.click();
-		Thread.sleep(5000);
-		MPStockUnlimited.click();
-		Assert.assertEquals(MPStocklimited.getText(), "Limited");
+	else if(MPStocklimited.isDisplayed()) 
+	{
+	MPStocklimited.click();
+	wait.eWToBeClickableCommand(driver, MPStockUnlimited);
+	MPStockUnlimited.click();
+	Assert.assertEquals(MPStocklimited.getText(), "Limited");
 	}
 		
 		
@@ -143,37 +145,37 @@ public class ManageProductsPages {
 	
 	public boolean isEnabledDelete()
 	{
-		boolean value= MPDelete.isEnabled();
-		return value;
+	boolean value= MPDelete.isEnabled();
+	return value;
 	}
 	
 	public void clickMP()
 	{
-		guobj1.clickCommand(MPMoreinfo);
+	guobj1.clickCommand(MPMoreinfo);
 	}
 	
 	public String getpageTitle()
 	{
-		String title = driver.getTitle();
-				return title;
+	String title = driver.getTitle();
+	return title;
 	}
 	
-	public void values() {
-		System.out.println(MPStockYes.getText());
-		System.out.println(MPStockNo.getText());
-		System.out.println(MPStockUnlimited.getText());
-		System.out.println(MPStocklimited.getText());
+	public void values() 
+	{
+	System.out.println(MPStockYes.getText());
+	System.out.println(MPStockNo.getText());
+	System.out.println(MPStockUnlimited.getText());
+	System.out.println(MPStocklimited.getText());
 	}
 	
 	@FindBy(xpath="//li[@class='breadcrumb-item']/a")
 	WebElement home;
 	public void home()
 	{
-		if(home.isDisplayed())
-		{
-			home.click();
-		
-		}
+	if(home.isDisplayed())
+	{
+	home.click();	
+	}
 	}
 	
 	

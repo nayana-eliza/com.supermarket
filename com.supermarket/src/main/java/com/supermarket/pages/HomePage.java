@@ -17,30 +17,33 @@ public class HomePage extends LoginPages{
 	ExcelUtility exobj = new ExcelUtility();
 	GeneralUtilities  guobj1 = new GeneralUtilities();
 	
-	public HomePage(WebDriver driver) {
-		super(driver);
+	public HomePage(WebDriver driver) 
+	{
+    super(driver);
 	}
 	
-	public void navigateToHomePage() throws IOException{
-		Lpobj= new LoginPages(driver);
-		Lpobj.clearDetails();
-		Lpobj.login(exobj.readStringData(1,0),exobj.readStringData(1,1));
-		  Assert.assertTrue(Lpobj.isDisplayedValue());
+	public void navigateToHomePage() throws IOException
+	{
+	Lpobj= new LoginPages(driver);
+	Lpobj.clearDetails();
+	Lpobj.login(exobj.readStringData(1,0),exobj.readStringData(1,1));
+	Assert.assertTrue(Lpobj.isDisplayedValue());
 	}
 	 
 	@FindBy(xpath="//li[@class='breadcrumb-item']/a")
 	WebElement home;
 	
-	public void navigateBack() {
-		home.click();
+	public void navigateBack() 
+	{
+	home.click();
 		
 	}
 	
 	public String getpageTitle()
 	{
-		String title = driver.getTitle();
-				return title;
-				}
+    String title = driver.getTitle();
+	return title;
+	}
 	
 	
 	

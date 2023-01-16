@@ -41,18 +41,18 @@ public class AdminUsersTests extends BaseClass{
   }
   
   
-  @Test(priority=4,enabled=false)
+  @Test(priority=4)
   public void statusCheck() throws InterruptedException {
 	  Adobj.statusCheck();  
   }
   
-  @Test(priority=5,enabled=false)
+  @Test(priority=5)
   public void editUser() throws IOException {
 	  Adobj.editUser(); 	  
   }
   
   
-  @Test(priority=6,enabled=false)
+  @Test(priority=6)
   public void deleteButton() {  
 	  Adobj.deleteUser();
   }

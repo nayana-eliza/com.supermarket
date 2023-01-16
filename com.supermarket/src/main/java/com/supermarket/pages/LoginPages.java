@@ -35,27 +35,29 @@ public class LoginPages {
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
 	WebElement error;
 	
-	public void login(String username1,String password1) {
-		username.sendKeys(username1);
-		password.sendKeys(password1);
-		signIn.click();
+	public void login(String username1,String password1) 
+	{
+	username.sendKeys(username1);
+	password.sendKeys(password1);
+	signIn.click();
 	}
 	
-	public boolean isDisplayedValue() {
-		boolean dashboardDisplay =dashboard.isDisplayed();
-		return dashboardDisplay;
+	public boolean isDisplayedValue() 
+	{
+	boolean dashboardDisplay =dashboard.isDisplayed();
+	return dashboardDisplay;
 	}
 	
 	public String getErrorMsg()
 	{
-		String errorMsg=error.getText();
-		return errorMsg;
+	String errorMsg=error.getText();
+	return errorMsg;
 	}
 	
 	public void clearDetails()
 	{
-		username.clear();
-		password.clear();
+	username.clear();
+	password.clear();
 	}
 	
 

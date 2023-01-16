@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.supermarket.constants.Constants;
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.WaitUtility;
 
@@ -17,22 +18,24 @@ public class ManageDeliveryBoyPages {
 	HomePage Hmobj;
 	WaitUtility wait = new WaitUtility();
 	
-	public ManageDeliveryBoyPages(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
+	public ManageDeliveryBoyPages(WebDriver driver) 
+	{
+	this.driver=driver;
+	PageFactory.initElements(driver, this);
 	}
 	
 	public String getpageTitle()
 	{
-		String title = driver.getTitle();
-				return title;
-				}
+	String title = driver.getTitle();
+	return title;
+	}
+	
 	//TESTCASE 1
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy']")
 	WebElement ManageDeliverBoy;
-	public void manageDeliveryBoyMoreinfo() {
-		guobj.clickCommand(ManageDeliverBoy);
-		
+	public void manageDeliveryBoyMoreinfo() 
+	{
+	guobj.clickCommand(ManageDeliverBoy);	
 	}
 	
 	//TESTCASE 2
@@ -40,21 +43,21 @@ public class ManageDeliveryBoyPages {
 	WebElement newDeliverBoy;
 	@FindBy(xpath="//input[@id='name']")
 	WebElement name;
-	
 	@FindBy(xpath="//input[@id='username']")
 	WebElement username;
-	
 	@FindBy(xpath="//input[@id='password']")
 	WebElement password;
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
 	WebElement nameCell;
-	public void newDeliverBoy() throws AWTException {
-		guobj.clickCommand(newDeliverBoy);
-		guobj.sendkeysCommand(name, "Naina");
-		guobj.sendkeysCommand(username, "Naina@123");
-		guobj.sendkeysCommand(password, "password@123");
-		guobj.enterKey();
-		Assert.assertEquals(nameCell.getText(), "Naina");
+	
+	public void newDeliverBoy() throws AWTException 
+	{
+	guobj.clickCommand(newDeliverBoy);
+	guobj.sendkeysCommand(name, "Naina");
+	guobj.sendkeysCommand(username, "Naina@123");
+	guobj.sendkeysCommand(password, "password@123");
+	guobj.enterKey();
+	Assert.assertEquals(nameCell.getText(), "Naina");
 	}
 	
 	
@@ -67,11 +70,12 @@ public class ManageDeliveryBoyPages {
 	WebElement searchname;
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
 	WebElement nameCellaftersearch;
-	public void searchDeliveryBoy(){
-		guobj.clickCommand(searchButton);
-		guobj.sendkeysCommand(nameCellBeforeSearch, "Naina");
-		guobj.clickCommand(searchname);
-		Assert.assertEquals(nameCellaftersearch.getText(),"Naina");
+	public void searchDeliveryBoy()
+	{
+	guobj.clickCommand(searchButton);
+	guobj.sendkeysCommand(nameCellBeforeSearch, "Naina");
+	guobj.clickCommand(searchname);
+	Assert.assertEquals(nameCellaftersearch.getText(),"Naina");
 	}
 	
 	//TESTCASE 4
@@ -85,11 +89,10 @@ public class ManageDeliveryBoyPages {
 	
 	public void passwordDoubleButton() throws InterruptedException
 	{
-		guobj.clickCommand(reset);
-		wait.eWToBeClickableCommand(driver, passwordDoubledown, 50);
-		guobj.clickCommand(passwordDoubledown);
-		Assert.assertEquals(passwordBar.getText(), "password@123");
-		
+	guobj.clickCommand(reset);
+	wait.eWToBeClickableCommand(driver, passwordDoubledown);
+	guobj.clickCommand(passwordDoubledown);
+	Assert.assertEquals(passwordBar.getText(), Constants.DeliveryBoypassword);	
 	}
 
 	
@@ -98,13 +101,12 @@ public class ManageDeliveryBoyPages {
 	WebElement deleteButton;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement	deletedSuccessfully;
-	public void deleteDeliveryBoy()
-	{
-		
-		guobj.clickCommand(deleteButton);
-		guobj.AlertAcceptCommand(driver);
-		Assert.assertTrue(deletedSuccessfully.isDisplayed());
 	
+	public void deleteDeliveryBoy()
+	{	
+	guobj.clickCommand(deleteButton);
+	guobj.AlertAcceptCommand(driver);
+	Assert.assertTrue(deletedSuccessfully.isDisplayed());
 	}
 	
 	
@@ -117,20 +119,22 @@ public class ManageDeliveryBoyPages {
 	
 	public void deliveryBoystatus() throws InterruptedException
 	{
-		guobj.clickCommand(reset);
-	if(DeliveryBoyActive.isDisplayed()) {
-		DeliveryBoyActive.click();
-		Thread.sleep(5000);
-		DeliveryBoyInactive.click();
-		Thread.sleep(5000);
-		Assert.assertEquals(DeliveryBoyActive.getText(), "Active");
+	guobj.clickCommand(reset);
+	if(DeliveryBoyActive.isDisplayed()) 
+	{
+	DeliveryBoyActive.click();
+	wait.eWToBeClickableCommand(driver, DeliveryBoyInactive);
+	DeliveryBoyInactive.click();
+	wait.eWToBeClickableCommand(driver, DeliveryBoyActive);
+	Assert.assertEquals(DeliveryBoyActive.getText(), "Active");
 	}
-	else if(DeliveryBoyInactive.isDisplayed()) {
-		DeliveryBoyInactive.click();
-		Thread.sleep(5000);
-		DeliveryBoyActive.click();
-		Thread.sleep(5000);
-		Assert.assertEquals(DeliveryBoyInactive.getText(), "Inactive");
+	else if(DeliveryBoyInactive.isDisplayed()) 
+	{
+	DeliveryBoyInactive.click();
+	wait.eWToBeClickableCommand(driver, DeliveryBoyActive);
+	DeliveryBoyActive.click();
+	wait.eWToBeClickableCommand(driver, DeliveryBoyInactive);
+	Assert.assertEquals(DeliveryBoyInactive.getText(), "Inactive");
 	}
 	}
 	
@@ -139,8 +143,9 @@ public class ManageDeliveryBoyPages {
 	WebElement Hamburger;
 	@FindBy(xpath="//a[@class='brand-link navbar-dark']")
 	WebElement Heading;
-	public void HamburgerButton() {
-		guobj.clickCommand(Hamburger);
-		Assert.assertEquals(Heading.getText(), "7rmart supermarket");
+	public void HamburgerButton() 
+	{
+	guobj.clickCommand(Hamburger);
+	Assert.assertEquals(Heading.getText(), Constants.HamburgerbuttonTitle);
 	}
-}
+    }

@@ -39,7 +39,7 @@ public class ManageProductsTests  extends BaseClass{
   }
 	 
 	  @Test(priority=2)
-	  public void editButton() throws IOException, AWTException, InterruptedException {
+	  public void manageProductsEditButton() throws IOException, AWTException, InterruptedException {
       MLpobj = new ManageProductsPages(driver);
 	  MLpobj.clickEdit();
 	  MLpobj.values();

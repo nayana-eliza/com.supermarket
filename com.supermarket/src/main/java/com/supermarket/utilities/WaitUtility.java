@@ -19,13 +19,13 @@ public class WaitUtility {
 	public void eWPresenceOfElement(WebDriver driver,WebElement element,int d)
 	{ 
 		WebDriverWait explicitwait = new WebDriverWait(driver,Duration.of(d, null));
-		explicitwait.until(ExpectedConditions.presenceOfElementLocated((By)element));
+		explicitwait.until(ExpectedConditions.visibilityOf(element));
 	}
 
-	public void eWToBeClickableCommand(WebDriver driver,WebElement element,int d)
+	public void eWToBeClickableCommand(WebDriver driver,WebElement element)
 	{ 
-		WebDriverWait explicitwait = new WebDriverWait(driver,Duration.of(d, null));
-		explicitwait.until(ExpectedConditions.elementToBeClickable((By)element));
+		WebDriverWait explicitwait = new WebDriverWait(driver,Duration.ofSeconds(5));
+		explicitwait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	public void explicitWaitSelectedCommand(WebDriver driver,WebElement element,int d)

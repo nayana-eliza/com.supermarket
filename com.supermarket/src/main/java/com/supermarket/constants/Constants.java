@@ -9,4 +9,7 @@ public class Constants {
     public static final String slidermoreinfo="List Sliders | 7rmart supermarket";
     public static final String deliverboymoreinfo="List Delivery Boy | 7rmart supermarket";
     public static final String AdminUsersmoreinfo="Admin Users | 7rmart supermarket";
+    public static final String AdminUserspassword="Password : Password@123";
+    public static final String HamburgerbuttonTitle="7rmart supermarket";
+    public static final String DeliveryBoypassword="Password : password@123";
 }

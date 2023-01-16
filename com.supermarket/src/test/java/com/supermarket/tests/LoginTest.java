@@ -32,24 +32,25 @@ public class LoginTest extends BaseClass {
 	//String url ="https://groceryapp.uniqassosiates.com/admin/login";
 	
   @Test(retryAnalyzer=RetryAnalyserUtility.class,groups="sanity")
-  public void loginwithValidCredentials() throws IOException {
-	  Lpobj = new LoginPages(driver);    //should write this ine first
-	  Lpobj.clearDetails();
-	  Lpobj.login(exobj.readStringData(1,0),exobj.readStringData(1,1));
-	  Assert.assertTrue(Lpobj.isDisplayedValue());
-	  
+  public void loginwithValidCredentials() throws IOException 
+  {
+  Lpobj = new LoginPages(driver);    //should write this ine first
+  Lpobj.clearDetails();
+  Lpobj.login(exobj.readStringData(1,0),exobj.readStringData(1,1));
+  Assert.assertTrue(Lpobj.isDisplayedValue());  
   }
+  
+  
   @Test(dataProvider="LoginData",dataProviderClass=DataProviderUtility.class)
-	  public void loginwithInValidCredentials(String username , String password) throws IOException {
+  public void loginwithInValidCredentials(String username , String password) throws IOException
+  {
 		  //excelUtility exobj = new excelUtility();
-		  Lpobj = new LoginPages(driver);    //sould write this ine first
-		  Lpobj.clearDetails();
-		  Lpobj.login(username,password);
-		  Assert.assertEquals(Lpobj.getErrorMsg(), Constants.expected);
-	  }
-  
-  
-    
+  Lpobj = new LoginPages(driver);    //sould write this ine first
+  Lpobj.clearDetails();
+  Lpobj.login(username,password);
+  Assert.assertEquals(Lpobj.getErrorMsg(), Constants.expected);
+  }
+   
  
   @AfterTest
   public void afterTest() {

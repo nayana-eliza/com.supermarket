@@ -44,7 +44,7 @@ public class ManageDeliveryBoyTests extends BaseClass {
 	  Mdbobj.searchDeliveryBoy();  
   }
   
-  @Test(priority=4,enabled = false)
+  @Test(priority=4)
   public void passwordDeliveryBoy() throws InterruptedException
   {
 	  Mdbobj.passwordDoubleButton();

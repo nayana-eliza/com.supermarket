@@ -60,8 +60,8 @@ public class ManageProductsTests  extends BaseClass{
 	  @Test(priority=5)
 	  public void homePage()
 	  {
-		  MLpobj.home();
-		  Assert.assertTrue(MLpobj.isDisplayedValue());
+	  MLpobj.home();
+	  Assert.assertTrue(MLpobj.isDisplayedValue());
 	  }
 	  
 	  

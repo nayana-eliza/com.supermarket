@@ -57,6 +57,8 @@ public class ManageProductsPages {
 	WebElement MPStockUnlimited;
 	@FindBy(xpath="//a[@class='btn btn-sm btn btn-danger btncss']")
 	WebElement MPDelete;
+	@FindBy(xpath="//a[@onclick='click_button(1)']")
+	WebElement newProductAddition;
 	
 
 	
@@ -84,6 +86,21 @@ public class ManageProductsPages {
 	WebElement editedCell;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement succesfullyUpdated;
+	@FindBy(xpath="//select[@id='sub_id']")
+	WebElement subCategory;
+	@FindBy(xpath="//select[@id='w_unit']")
+	WebElement WeightUnit;
+	
+	public void newProductAdd()
+	{
+	guobj1.clickCommand(newProductAddition);
+	guobj1.sendkeysCommand(Titleinput,"testProduct");
+	guobj1.clickCommand(MPStockYes);
+	guobj1.dropdownSelectbyVisibleText(subCategory, "select");
+	guobj1.dropdownSelectbyVisibleText(WeightUnit, "g");
+		
+	}
+	
 	
 	public void clickEdit() throws AWTException
 	{
@@ -112,13 +129,14 @@ public class ManageProductsPages {
 	if(MPStockYes.isDisplayed()) 
 	{
 	MPStockYes.click();	
-	Thread.sleep(5000);
+	wait.eWToBeClickableCommand(driver, MPStockNo);
 	MPStockNo.click();
 	Assert.assertEquals(MPStockYes.getText(), "Yes");
 	}
 	else if(MPStockNo.isDisplayed())
 	{
 	MPStockNo.click();
+	wait.eWToBeClickableCommand(driver, MPStockYes);
 	MPStockYes.click();	
 	Assert.assertEquals(MPStockNo.getText(), "No");
 	}}

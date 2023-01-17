@@ -157,9 +157,14 @@ import com.supermarket.utilities.WaitUtility;
 	public void newSlider() throws AWTException 
 	{
 	guobj1.clickCommand(newSlider);
-	Choosefile.sendKeys("E:\\eclipse-workspace\\com.supermarket\\src\\main\\resources\\uploadFiles\\testing.jpg");
+	Choosefile.sendKeys(System.getProperty("user.dir"), "\\src\\main\\resources\\uploadFiles\\testing.jpg");
+//	Choosefile.sendKeys("E:\\eclipse-workspace\\com.supermarket\\src\\main\\resources\\uploadFiles\\testing.jpg");
 	updateLink.sendKeys("https://www.amazon.in/");
 	guobj1.enterKey();
 	Assert.assertTrue(successAlert.isDisplayed());
 	}	
 	}
+    
+   
+    
+    

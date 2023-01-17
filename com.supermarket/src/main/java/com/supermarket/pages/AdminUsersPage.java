@@ -17,7 +17,6 @@ import com.supermarket.utilities.WaitUtility;
 
 public class AdminUsersPage {
 	WebDriver driver;
-	
 	ExcelUtility exobj=new ExcelUtility();
 	GeneralUtilities guobj=new GeneralUtilities();
 	WaitUtility wait = new WaitUtility();

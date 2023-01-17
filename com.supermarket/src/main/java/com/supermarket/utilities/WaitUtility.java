@@ -11,9 +11,9 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtility {
-	public void implicitWaitCommand(WebDriver driver,int d)
+	public void implicitWaitCommand(WebDriver driver)
 	{
-		driver.manage().timeouts().implicitlyWait(Duration.of(d, null));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 	
 	public void eWPresenceOfElement(WebDriver driver,WebElement element,int d)

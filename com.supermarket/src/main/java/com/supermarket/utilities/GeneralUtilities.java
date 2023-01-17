@@ -7,8 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -24,33 +27,33 @@ public class GeneralUtilities {
 	WebDriver driver;
 	public WebDriver browserLaunch(String url,String browser)
 	{
-		if(browser.equalsIgnoreCase("edge"))
-		{
-			WebDriverManager.edgedriver().setup();
-			driver= new EdgeDriver();
-		}
-		else if(browser.equalsIgnoreCase("chrome"))
-		{
-			WebDriverManager.chromedriver().setup();
-			driver= new ChromeDriver();
-		}
-		else
-		{
-			System.out.println("Please check the browser you have entered");
-		}
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get(url);
-		return driver;
+	if(browser.equalsIgnoreCase("edge"))
+	{
+	WebDriverManager.edgedriver().setup();
+    driver= new EdgeDriver();
+	}
+	else if(browser.equalsIgnoreCase("chrome"))
+	{
+	WebDriverManager.chromedriver().setup();
+	driver= new ChromeDriver();
+	}
+	else
+	{
+	System.out.println("Please check the browser you have entered");
+	}
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	driver.get(url);
+	return driver;
 	}
 	
 	public void takeScreenshotCommand(WebDriver driver,String testcaseName) throws IOException
 	
 	{
-		Date d = new Date();
-		String date=d.toString().replace(":", "_").replace(",", "_");	
-	  TakesScreenshot ts = (TakesScreenshot)driver;
-	  File sourcefile = ts.getScreenshotAs(OutputType.FILE);
+	Date d = new Date();
+	String date=d.toString().replace(":", "_").replace(",", "_");	
+	TakesScreenshot ts = (TakesScreenshot)driver;
+	File sourcefile = ts.getScreenshotAs(OutputType.FILE);
 	FileHandler.copy(sourcefile,new File("./ScreenShots/"+ testcaseName +"_"+date+".jpg"));  //("./FOLDERNAME/"+"FILENAME")
 	}
 	
@@ -126,4 +129,31 @@ public class GeneralUtilities {
 		robot.delay(250);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
-	}
+	
+
+    public void dropdownSelectbyVisibleText(WebElement element,String text)
+    {
+    	Select obj= new Select(element);
+    	obj.selectByVisibleText(text);
+    }
+    
+//    public void checkDynamicTablecell(WebElement row,WebElement cell)
+//    {
+//    	List<WebElement> rows1 = driver.findElements(By.xpath("//table[@class='ws-table-all']/tbody/tr"));
+//  	  int rowcount= rows1.size();                       //to find size
+//  	  System.out.println(rowcount);
+//  	  List<WebElement> column1 = driver.findElements(By.xpath("//table[@class='ws-table-all']/tbody/tr[2]/td"));
+//  	  int columnsize = column1.size();
+//  	  System.out.println(columnsize);
+//  	  for(int i=2;i<=6;i++)
+//  	  {
+//  		  for(int j=1;j<=3;j++)
+//  		  {
+//  			  String Webdata= driver.findElement(By.xpath("//table[@class='ws-table-all']/tbody/tr["+i+"]/td["+j+"]")).getText();
+//  			  System.out.println(Webdata);
+//  		  }
+//  	  }
+//    }
+//    
+    
+    }

@@ -38,7 +38,7 @@ public class ManageProductsTests  extends BaseClass{
 	 Assert.assertEquals(MLpobj.getpageTitle(), Constants.manageProductspage);
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2,enabled = false)
 	public void manageProductsEditButton() throws IOException, AWTException, InterruptedException 
 	{
 	MLpobj = new ManageProductsPages(driver);

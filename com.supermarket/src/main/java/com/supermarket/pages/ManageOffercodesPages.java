@@ -112,10 +112,9 @@ import com.supermarket.utilities.WaitUtility;
 	testOfferCode.sendKeys(Constants.newOffercodeName);
 	guobj1.scrolldown(driver);
 	wait.eWToBeClickableCommand(driver, offercodeChoosefile);
-	fuobj.fileUploadCommand(offercodeChoosefile, System.getProperty("user.dir","\\src\\main\\resources\\uploadFiles\\image.jpg"));
-    guobj1.enterKey();
-	//	offercodeChoosefile.sendKeys(System.getProperty("user.dir","\\src\\main\\resources\\uploadFiles\\image.jpg"));
-	//guobj1.clickCommand(SaveButton);
+	fuobj.fileUploadCommand(offercodeChoosefile, System.getProperty("user.dir")+"\\src\\main\\resources\\uploadFiles\\image.jpg");
+    wait.eWToBeClickableCommand(driver, SaveButton);
+	guobj1.enterKey();
 	return successAlert.isDisplayed();
 	}
 		

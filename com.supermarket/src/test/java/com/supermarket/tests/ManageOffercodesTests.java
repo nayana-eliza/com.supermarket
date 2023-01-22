@@ -42,28 +42,24 @@ public class ManageOffercodesTests extends BaseClass {
   
   @Test(priority=2)
   public void newOfferCode() throws AWTException, InterruptedException{
-  boolean newOfferCode= MOCobj.newOfferCode();
-  Assert.assertTrue(newOfferCode);
+  Assert.assertTrue(MOCobj.newOfferCode());
   }
 	  
   @Test(priority=3)
   public void offerCodeStatusCheck() throws InterruptedException
   {
-  String offerCodeStatus= MOCobj.offercodeStatusCheck();
-  Assert.assertEquals(offerCodeStatus, Constants.Activestatus);
+  Assert.assertEquals(MOCobj.offercodeStatusCheck(), Constants.Activestatus);
   }
   
   @Test(priority=4)
   public void editElement() throws AWTException, IOException
   {
-  String editelement= MOCobj.editOffercode();
-  Assert.assertEquals(editelement, Constants.percentage);
+  Assert.assertEquals(MOCobj.editOffercode(), Constants.percentage);
   }
   
   @Test(priority=5)
-  public void offerCodeDeleteButton() throws AWTException {
-  boolean OfferCodeDeletestatus= MOCobj.deleteOffercode(); 
-  Assert.assertTrue(OfferCodeDeletestatus);  
+  public void offerCodeDeleteButton() throws AWTException { 
+  Assert.assertTrue(MOCobj.deleteOffercode());  
   }
   
   @Test(priority=6)

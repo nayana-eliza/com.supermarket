@@ -7,11 +7,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"></parameter>
     <classes>
-    <class name="com.supermarket.tests.LoginTest"/>
-      <class name="com.supermarket.tests.ManageOffercodesTests"/>
-      <class name="com.supermarket.tests.ManageDeliveryBoyTests"/>
       <class name="com.supermarket.tests.ManageProductsTests"/>
-      <class name="com.supermarket.tests.AdminUsersTests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

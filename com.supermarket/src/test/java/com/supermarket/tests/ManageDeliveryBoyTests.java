@@ -27,44 +27,56 @@ public class ManageDeliveryBoyTests extends BaseClass {
 	ManageDeliveryBoyPages Mdbobj;
 	
   @Test(priority=1)
-  public void manageDeliveryBoyMoreinfo() throws IOException {
-	  Hmobj = new HomePage(driver);
-	  Mdbobj=new ManageDeliveryBoyPages(driver);
-	  Hmobj.navigateToHomePage();
-	  Mdbobj.manageDeliveryBoyMoreinfo();
-	  Assert.assertEquals(Mdbobj.getpageTitle(), Constants.deliverboymoreinfo);
+  public void manageDeliveryBoyMoreinfo() throws IOException 
+  {
+   Hmobj = new HomePage(driver);
+   Mdbobj=new ManageDeliveryBoyPages(driver);
+   Hmobj.navigateToHomePage();
+   Mdbobj.manageDeliveryBoyMoreinfo();
+   Assert.assertEquals(Mdbobj.getpageTitle(), Constants.deliverboymoreinfo);
   }
   @Test(priority=2)
-  public void newDeliveryBoy() throws AWTException {
-	  Mdbobj.newDeliverBoy();
+  public void newDeliveryBoy() throws AWTException 
+  {
+   Mdbobj.newDeliverBoy();
+   Assert.assertEquals(Mdbobj.namecellDeliveryBoy(),Constants.EditedUsernamecell);
   }
    
   @Test(priority=3)
-  public void searchDeliveryBoy() {
-	  Mdbobj.searchDeliveryBoy();  
+  public void searchDeliveryBoy() 
+  {
+  String nameCellaftersearch=Mdbobj.searchDeliveryBoy();
+  Assert.assertEquals(nameCellaftersearch, Constants.EditedUsernamecell);
   }
   
   @Test(priority=4)
   public void passwordDeliveryBoy() throws InterruptedException
   {
-	  Mdbobj.passwordDoubleButton();
+  String DeliveryBoyPassword= Mdbobj.passwordDoubleButton();
+  Assert.assertEquals(DeliveryBoyPassword, Constants.DeliveryBoypassword);
   }
   
   
   @Test(priority=5)
-  public void deliveryBoystatus() throws InterruptedException {
-	  Mdbobj.deliveryBoystatus();
+  public void deliveryBoystatus() throws InterruptedException 
+  {
+  String DeliverBoyActive = Mdbobj.deliveryBoystatus();
+  Assert.assertEquals(DeliverBoyActive, Constants.Activestatus);
   }
   
   @Test(priority=6)
-  public void deleteDeliveryBoy() {
-	  Mdbobj.deleteDeliveryBoy();
+  public void deleteDeliveryBoy() 
+  {
+  boolean deletedsuccessfullyAlert= Mdbobj.deleteDeliveryBoy();
+  Assert.assertTrue(deletedsuccessfullyAlert);
   }
   
 
   @Test(priority=7)
-  public void hamburgerButton() {
-	  Mdbobj.HamburgerButton();
+  public void hamburgerButton() 
+  {
+  String HamburgerTitle=Mdbobj.HamburgerButton();
+  Assert.assertEquals(HamburgerTitle, Constants.HamburgerbuttonTitle);
   }
   
   

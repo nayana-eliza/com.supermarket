@@ -1,6 +1,7 @@
 package com.supermarket.pages;
 
 import java.awt.AWTException;
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.supermarket.constants.Constants;
+import com.supermarket.utilities.ExcelUtility;
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.WaitUtility;
 
@@ -17,6 +19,54 @@ public class ManageDeliveryBoyPages {
 	GeneralUtilities guobj = new GeneralUtilities();
 	HomePage Hmobj;
 	WaitUtility wait = new WaitUtility();
+	ExcelUtility exobj= new ExcelUtility();
+	
+	//TESTCASE 2
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	WebElement newDeliverBoy;
+	@FindBy(xpath = "//input[@id='name']")
+	WebElement name;
+	@FindBy(xpath = "//input[@id='username']")
+	WebElement username;
+	@FindBy(xpath = "//input[@id='password']")
+	WebElement password;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
+	WebElement nameCell;
+	// TESTCASE 1
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy']")
+	WebElement ManageDeliverBoy;
+	// TESTCASE 3
+	@FindBy(xpath = "//a[@onclick='click_button(2)']")
+	WebElement searchButton;
+	@FindBy(xpath = "//input[@id='un']")
+	WebElement nameCellBeforeSearch;
+	@FindBy(xpath = "//button[@name='Search']")
+	WebElement searchname;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
+	WebElement nameCellaftersearch;
+	// TESTCASE 4
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[7]//a")
+	WebElement passwordDoubledown;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr[2]/td")
+	WebElement passwordBar;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")
+	WebElement reset;
+	// TESTCASE 5
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[8]/a[@class='btn btn-sm btn btn-danger btncss']")
+	WebElement deleteButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement deletedSuccessfully;
+	// TESTCASE 6
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[6]//span[text()=\"Active\"]")
+	WebElement DeliveryBoyActive;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[6]//span[text()=\"Inactive\"]")
+	WebElement DeliveryBoyInactive;
+	// TESTCASE 7
+	@FindBy(xpath = "//i[@class='fas fa-bars']")
+	WebElement Hamburger;
+	@FindBy(xpath = "//a[@class='brand-link navbar-dark']")
+	WebElement Heading;
+		
 	
 	public ManageDeliveryBoyPages(WebDriver driver) 
 	{
@@ -30,94 +80,60 @@ public class ManageDeliveryBoyPages {
 	return title;
 	}
 	
-	//TESTCASE 1
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy']")
-	WebElement ManageDeliverBoy;
+	
 	public void manageDeliveryBoyMoreinfo() 
 	{
 	guobj.clickCommand(ManageDeliverBoy);	
 	}
 	
-	//TESTCASE 2
-	@FindBy(xpath="//a[@onclick='click_button(1)']")
-	WebElement newDeliverBoy;
-	@FindBy(xpath="//input[@id='name']")
-	WebElement name;
-	@FindBy(xpath="//input[@id='username']")
-	WebElement username;
-	@FindBy(xpath="//input[@id='password']")
-	WebElement password;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
-	WebElement nameCell;
 	
-	public void newDeliverBoy() throws AWTException 
+	
+	public void newDeliverBoy() throws AWTException  
 	{
 	guobj.clickCommand(newDeliverBoy);
 	guobj.sendkeysCommand(name, "Naina");
 	guobj.sendkeysCommand(username, "Naina@123");
 	guobj.sendkeysCommand(password, "password@123");
 	guobj.enterKey();
-	Assert.assertEquals(nameCell.getText(), "Naina");
+	}
+	
+	public String namecellDeliveryBoy() 
+	{
+	String name =nameCell.getText();
+	return name;
 	}
 	
 	
-	//TESTCASE 3
-	@FindBy(xpath="//a[@onclick='click_button(2)']")
-	WebElement searchButton;
-	@FindBy(xpath="//input[@id='un']")
-	WebElement nameCellBeforeSearch;
-	@FindBy(xpath="//button[@name='Search']")
-	WebElement searchname;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[1]")
-	WebElement nameCellaftersearch;
-	public void searchDeliveryBoy()
+	
+	
+	public String searchDeliveryBoy()
 	{
 	guobj.clickCommand(searchButton);
 	guobj.sendkeysCommand(nameCellBeforeSearch, "Naina");
 	guobj.clickCommand(searchname);
-	Assert.assertEquals(nameCellaftersearch.getText(),"Naina");
+	return nameCellaftersearch.getText();
 	}
 	
-	//TESTCASE 4
 	
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[7]//a")
-	WebElement passwordDoubledown;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr[2]/td")
-	WebElement passwordBar;
-	@FindBy(xpath="//a[@class='btn btn-rounded btn-warning']")
-	WebElement reset;
-	
-	public void passwordDoubleButton() throws InterruptedException
+	public String passwordDoubleButton() throws InterruptedException
 	{
 	guobj.clickCommand(reset);
 	wait.eWToBeClickableCommand(driver, passwordDoubledown);
 	guobj.clickCommand(passwordDoubledown);
-	Assert.assertEquals(passwordBar.getText(), Constants.DeliveryBoypassword);	
+	return passwordBar.getText();	
 	}
 
 	
-	//TESTCASE 5
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[8]/a[@class='btn btn-sm btn btn-danger btncss']")
-	WebElement deleteButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement	deletedSuccessfully;
 	
-	public void deleteDeliveryBoy()
+	public boolean deleteDeliveryBoy()
 	{	
 	guobj.clickCommand(deleteButton);
 	guobj.AlertAcceptCommand(driver);
-	Assert.assertTrue(deletedSuccessfully.isDisplayed());
+	return deletedSuccessfully.isDisplayed();
 	}
 	
 	
-	//TESTCASE 6
-	
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[6]//span[text()=\"Active\"]")
-	WebElement DeliveryBoyActive;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[6]//span[text()=\"Inactive\"]")
-	WebElement DeliveryBoyInactive;
-	
-	public void deliveryBoystatus() throws InterruptedException
+	public String deliveryBoystatus() 
 	{
 	guobj.clickCommand(reset);
 	if(DeliveryBoyActive.isDisplayed()) 
@@ -126,26 +142,21 @@ public class ManageDeliveryBoyPages {
 	wait.eWToBeClickableCommand(driver, DeliveryBoyInactive);
 	DeliveryBoyInactive.click();
 	wait.eWToBeClickableCommand(driver, DeliveryBoyActive);
-	Assert.assertEquals(DeliveryBoyActive.getText(), "Active");
 	}
 	else if(DeliveryBoyInactive.isDisplayed()) 
 	{
 	DeliveryBoyInactive.click();
 	wait.eWToBeClickableCommand(driver, DeliveryBoyActive);
-	DeliveryBoyActive.click();
-	wait.eWToBeClickableCommand(driver, DeliveryBoyInactive);
-	Assert.assertEquals(DeliveryBoyInactive.getText(), "Inactive");
 	}
+	return DeliveryBoyActive.getText();
 	}
 	
-	//TESTCASE 7
-	@FindBy(xpath="//i[@class='fas fa-bars']")
-	WebElement Hamburger;
-	@FindBy(xpath="//a[@class='brand-link navbar-dark']")
-	WebElement Heading;
-	public void HamburgerButton() 
+	
+	public String HamburgerButton() 
 	{
 	guobj.clickCommand(Hamburger);
-	Assert.assertEquals(Heading.getText(), Constants.HamburgerbuttonTitle);
+	return Heading.getText();
 	}
+	
+	
     }

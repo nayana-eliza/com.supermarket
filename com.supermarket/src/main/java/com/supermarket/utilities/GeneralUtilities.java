@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -137,23 +139,40 @@ public class GeneralUtilities {
     	obj.selectByVisibleText(text);
     }
     
-//    public void checkDynamicTablecell(WebElement row,WebElement cell)
-//    {
-//    	List<WebElement> rows1 = driver.findElements(By.xpath("//table[@class='ws-table-all']/tbody/tr"));
-//  	  int rowcount= rows1.size();                       //to find size
-//  	  System.out.println(rowcount);
-//  	  List<WebElement> column1 = driver.findElements(By.xpath("//table[@class='ws-table-all']/tbody/tr[2]/td"));
-//  	  int columnsize = column1.size();
-//  	  System.out.println(columnsize);
-//  	  for(int i=2;i<=6;i++)
-//  	  {
-//  		  for(int j=1;j<=3;j++)
-//  		  {
-//  			  String Webdata= driver.findElement(By.xpath("//table[@class='ws-table-all']/tbody/tr["+i+"]/td["+j+"]")).getText();
-//  			  System.out.println(Webdata);
-//  		  }
-//  	  }
-//    }
-//    
     
+    public void scrolldown(WebDriver driver) {
+    JavascriptExecutor js= (JavascriptExecutor) driver;
+    js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+    
+    
+
+    
+    
+    public boolean checkDynamicTablecell(WebElement row,WebElement cell,String xpath,String text)
+    {
+    	boolean value = false;
+      List<WebElement> rows1 = driver.findElements(By.xpath("xpath of row"));
+  	  int rowcount= rows1.size();                       //to find size
+  	  System.out.println(rowcount);
+  	  List<WebElement> column1 = driver.findElements(By.xpath("xpath of cell"));
+  	  int columnsize = column1.size();
+  	  System.out.println(columnsize);
+  	  for(int i=2;i<=rowcount;i++)
+  	  {
+  		  for(int j=1;j<=1;j++)
+  		  {
+ 			  String Webdata= driver.findElement(By.xpath("xpath")).getText();
+                   if(Webdata==text) 
+                   {
+                	     value=true;
+                   }
+                   else 
+                   {
+                	    value= false;
+              }
+  		  }
+  	  } 
+  	return value;
+    }
     }

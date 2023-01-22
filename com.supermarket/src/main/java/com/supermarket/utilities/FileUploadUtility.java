@@ -11,14 +11,15 @@ import org.openqa.selenium.WebElement;
 
 public class FileUploadUtility {
 	
-	public void fileUploadCommand(WebElement element,String filepath) {
+	 public void fileUploadCommand(WebElement element,String filepath) {
 		 element.sendKeys(filepath);   
 	  }
 	
-	public void robotClassFileUpload(WebElement element, String fileupload)throws Exception {
-		  StringSelection s= new StringSelection(fileupload);
-		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
-		  element.click();
+	  public void robotClassFileUpload(WebElement element, String fileupload)throws Exception 
+	  {
+	  StringSelection s= new StringSelection(fileupload);
+	  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
+	  element.click();
 		 Robot robot=new Robot();
 		  robot.delay(250);
 		  robot.keyPress(KeyEvent.VK_ENTER);

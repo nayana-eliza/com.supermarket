@@ -24,55 +24,53 @@ public class ManageProductsTests  extends BaseClass{
 	LoginPages Lpobj;
 	ManageProductsPages MLpobj;
 	ExcelUtility exobj = new ExcelUtility();
-	HomePage hmobj;
+	HomePage Hmobj;
+	
 	
   @Test(priority=1)
-  public void loginHomePage() throws IOException {
-	  Lpobj = new LoginPages(driver);
-	  MLpobj = new ManageProductsPages(driver);
-	  Lpobj.clearDetails();
-	  Lpobj.login(exobj.readStringData(1,0),exobj.readStringData(1,1)); 
-	  System.out.println(driver.getTitle());
-	  MLpobj.clickMP();
-	  System.out.println(MLpobj.getpageTitle());
-	  Assert.assertEquals(MLpobj.getpageTitle(),Constants.moreinfopage);
-  }
-	 
-	  @Test(priority=2)
-	  public void manageProductsEditButton() throws IOException, AWTException, InterruptedException {
-      MLpobj = new ManageProductsPages(driver);
-	  MLpobj.clickEdit();
-	  MLpobj.values();
-	  }
-	  
-	  @Test(priority=3)
-	  public void stockStatusButton() throws IOException, AWTException, InterruptedException {
-      MLpobj = new ManageProductsPages(driver);
-	  MLpobj.stock();
-	  }
+	public void loginHomePage() throws IOException {
+     Lpobj = new LoginPages(driver);
+     MLpobj = new ManageProductsPages(driver);
+	 Hmobj = new HomePage(driver);
+	 Hmobj.navigateToHomePage();
+	 MLpobj.clickMP();
+	 System.out.println(MLpobj.getpageTitle());
+	 Assert.assertEquals(MLpobj.getpageTitle(), Constants.manageProductspage);
+	}
 
-	  @Test(priority=4)
-	  public void stockQuantityButton() throws IOException, AWTException, InterruptedException {
-      MLpobj = new ManageProductsPages(driver);
-	  MLpobj.stockstatus();
-	  }
-	  
-	  @Test(priority=5)
-	  public void homePage()
-	  {
-	  MLpobj.home();
-	  Assert.assertTrue(MLpobj.isDisplayedValue());
-	  }
-	  
-	  
-  
-  @BeforeTest
-  public void beforeTest() {
-  }
+	@Test(priority = 2)
+	public void manageProductsEditButton() throws IOException, AWTException, InterruptedException 
+	{
+	MLpobj = new ManageProductsPages(driver);
+	Assert.assertTrue(MLpobj.clickEdit());
+	}
 
-  @AfterTest
-  public void afterTest() {
-	  
-  }
+	@Test(priority = 3)
+	public void stockStatusButton() throws IOException, AWTException, InterruptedException 
+	{
+	Assert.assertEquals(MLpobj.stock(), Constants.yes);
+	}
+
+	@Test(priority = 4)
+	public void stockQuantityButton() throws IOException, AWTException, InterruptedException 
+	{
+	Assert.assertEquals(MLpobj.stockstatus(), Constants.Unlimitedstock);
+	}
+
+	@Test(priority = 5)
+	public void homePage() 
+	{
+	MLpobj.home();
+	Assert.assertTrue(MLpobj.isDisplayedValue());
+	}
+
+	@BeforeTest
+	public void beforeTest() {
+	}
+
+	@AfterTest
+	public void afterTest() {
+
+	}
 
 }

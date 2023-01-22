@@ -21,6 +21,47 @@ public class AdminUsersPage {
 	GeneralUtilities guobj=new GeneralUtilities();
 	WaitUtility wait = new WaitUtility();
 	
+	//TESTCASE 21
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
+	WebElement adminUsersMoreInfo;
+	// TESTCASE 22
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	WebElement newUser;
+	@FindBy(xpath = "//input[@id='username']")
+	WebElement username;
+	@FindBy(xpath = "//input[@id='password']")
+	WebElement password;
+	@FindBy(xpath = "//select[@id='user_type']")
+	WebElement dropDown;
+	@FindBy(xpath = "//button[@name='Create']")
+	WebElement saveButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement successAlert;
+	// TESTCASE 23
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[4]//i[@class='fa fa-angle-double-down']")
+	WebElement passworddoubleDropdown;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr[2]")
+	WebElement passwordDisplay;
+	// TESTCASE 24
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[3]//span[text()=\"Active\"]")
+	WebElement statusActive;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[3]//span[text()=\"Inactive\"]")
+	WebElement statusInactive;
+	// TESTCASE 25
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[5]//i[@class='fas fa-edit']")
+	WebElement editButton;
+	@FindBy(xpath = "//button[@name='Update']")
+	WebElement updateButton;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr")
+	WebElement rowxpath;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td")
+	WebElement columnxpath;
+
+	// div[@class='alert alert-success alert-dismissible']
+	// TESTCASE 26
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[5]//i[@class='fas fa-trash-alt']")
+	WebElement deleteButton;
+		
 	public AdminUsersPage(WebDriver driver) 
 	{
 	this.driver=driver;
@@ -33,29 +74,14 @@ public class AdminUsersPage {
 	return title;
 	}
 
-	//TESTCASE 21
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
-	WebElement adminUsersMoreInfo;
+	
 	public void adminUsers() throws IOException 
 	{
 	guobj.clickCommand(adminUsersMoreInfo);	
 	}
 	
-	//TESTCASE 22
-	@FindBy(xpath="//a[@onclick='click_button(1)']")
-	WebElement newUser;
-	@FindBy(xpath="//input[@id='username']")
-	WebElement username;
-	@FindBy(xpath="//input[@id='password']")
-	WebElement password ;
-	@FindBy(xpath="//select[@id='user_type']")
-	WebElement dropDown ;
-	@FindBy(xpath="//button[@name='Create']")
-	WebElement saveButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-    WebElement successAlert ;
 	
-	public void newUserAdd() throws IOException, AWTException 
+	public boolean newUserAdd() throws IOException, AWTException 
 	{
 	guobj.clickCommand(newUser);
 	username.sendKeys(exobj.readStringData(4,1));
@@ -63,26 +89,18 @@ public class AdminUsersPage {
 	Select obj = new Select(dropDown);
 	obj.selectByVisibleText("Admin");
 	guobj.clickCommand(saveButton);
-	Assert.assertTrue(successAlert.isDisplayed(),"new user created");		
+	return successAlert.isDisplayed();		
 	}
 	
-	//TESTCASE 23
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[4]//i[@class='fa fa-angle-double-down']")
-    WebElement passworddoubleDropdown;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr[2]")
-	WebElement passwordDisplay;
-	public void passworddoubleDropdown() 
+	
+	public String passworddoubleDropdown() 
 	{
 	guobj.clickCommand(passworddoubleDropdown);
-	Assert.assertEquals(passwordDisplay.getText(), Constants.AdminUserspassword);
+	return passwordDisplay.getText();
 	}
 	
-	//TESTCASE 24
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[3]//span[text()=\"Active\"]")
-    WebElement statusActive;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[3]//span[text()=\"Inactive\"]")
-    WebElement statusInactive;
-	public void statusCheck() throws InterruptedException 
+	
+	public String statusCheck() throws InterruptedException 
 	{
 	if(statusActive.isDisplayed()) 
 	{
@@ -90,39 +108,28 @@ public class AdminUsersPage {
 	wait.eWToBeClickableCommand(driver, statusInactive);
 	statusInactive.click();
 	wait.eWToBeClickableCommand(driver, statusActive);
-	Assert.assertEquals(statusActive.getText(), "Active");
 	}
 	else if(statusInactive.isDisplayed()) 
 	{
 	statusInactive.click();
 	wait.eWToBeClickableCommand(driver, statusActive);
 	statusActive.click();
-	wait.eWToBeClickableCommand(driver, statusInactive);
-	Assert.assertEquals(statusInactive.getText(), "Inactive");
 	}
+	return statusActive.getText();
 	}
-		//TESTCASE 25
-	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[5]//i[@class='fas fa-edit']")
-	WebElement editButton;
-	@FindBy(xpath = "//button[@name='Update']")
-	WebElement updateButton;
-
-	// div[@class='alert alert-success alert-dismissible']
-	public void editUser() throws IOException {
+	
+	public boolean editUser() throws IOException {
 	guobj.clickCommand(editButton);
 	guobj.clearCommand(username);
 	username.sendKeys(exobj.readStringData(6, 1));
 	guobj.clickCommand(updateButton);
-	Assert.assertTrue(successAlert.isDisplayed());
+	return successAlert.isDisplayed();
 	}
 		
-	// TESTCASE 26
-	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[5]//i[@class='fas fa-trash-alt']")
-	WebElement deleteButton;
 
-	public void deleteUser() {
+	public boolean deleteUser() {
 	guobj.clickCommand(deleteButton);
 	driver.switchTo().alert().accept();
-	Assert.assertTrue(successAlert.isDisplayed());
+	return successAlert.isDisplayed();
 	}
     }

@@ -31,7 +31,7 @@ public class WaitUtility {
 	public void explicitWaitSelectedCommand(WebDriver driver,WebElement element,int d)
 	{ 
 		WebDriverWait explicitwait = new WebDriverWait(driver,Duration.of(d, null));
-		explicitwait.until(ExpectedConditions.elementToBeSelected((By)element));
+		explicitwait.until(ExpectedConditions.elementToBeSelected(element));
 	}
 		
 	

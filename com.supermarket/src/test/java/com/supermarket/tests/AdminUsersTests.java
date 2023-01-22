@@ -13,47 +13,52 @@ import com.supermarket.pages.LoginPages;
 import com.supermarket.utilities.ExcelUtility;
 
 public class AdminUsersTests extends BaseClass{
-	HomePage Hmobj;
+    HomePage Hmobj;
 	AdminUsersPage Adobj;
 	LoginPages Lpobj;
 	ExcelUtility exobj=new ExcelUtility();
 	
   @Test(priority=1)
   public void adminUsersMoreInfo() throws IOException {
-	  Hmobj= new HomePage(driver);
-	  Lpobj= new LoginPages(driver);
-	  Adobj = new AdminUsersPage(driver);
-	  Hmobj.navigateToHomePage();
-	  Adobj.adminUsers();
-	  Assert.assertEquals(Adobj.getpageTitle(), Constants.AdminUsersmoreinfo);
+  Hmobj= new HomePage(driver);
+  Lpobj= new LoginPages(driver);
+  Adobj = new AdminUsersPage(driver);
+  Hmobj.navigateToHomePage();
+  Adobj.adminUsers();
+  Assert.assertEquals(Adobj.getpageTitle(), Constants.AdminUsersmoreinfo);
   }
 	
 	
   @Test(priority=2)
   public void newUser() throws IOException, AWTException {
-	  Adobj.newUserAdd();	  
+  Boolean newUserValue= Adobj.newUserAdd();
+  Assert.assertTrue(newUserValue);  
   }
   
   
   @Test(priority=3,enabled=false)
   public void passworddoubleDropdown() {
-	   Adobj.passworddoubleDropdown();  
+  String AdminUserPassword= Adobj.passworddoubleDropdown();
+  Assert.assertEquals(AdminUserPassword, Constants.AdminUserspassword); 
   }
   
   
   @Test(priority=4)
   public void statusCheck() throws InterruptedException {
-	  Adobj.statusCheck();  
+  String StatusActive = Adobj.statusCheck(); 
+  Assert.assertEquals(StatusActive, Constants.Activestatus);
   }
   
   @Test(priority=5)
   public void editUser() throws IOException {
-	  Adobj.editUser(); 	  
+  boolean editUserValue = Adobj.editUser(); 
+  Assert.assertTrue(editUserValue);
   }
   
   
   @Test(priority=6)
   public void deleteButton() {  
-	  Adobj.deleteUser();
+  boolean deleteButtonValue= Adobj.deleteUser();
+  Assert.assertTrue(deleteButtonValue);
   }
-}
+  }

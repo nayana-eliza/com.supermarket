@@ -59,22 +59,6 @@ public class ManageProductsPages {
 	WebElement MPDelete;
 	@FindBy(xpath="//a[@onclick='click_button(1)']")
 	WebElement newProductAddition;
-	
-
-	
-	public boolean isDisplayedValue( ) 
-	{
-	boolean Display =dashboard.isDisplayed();
-	return Display;
-	}
-	
-	
-	public boolean isDisplayed1() 
-	{
-	boolean value=guobj1.isDisplayedCommand(ListProducts);
-	return value;
-	}
-	 
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[9]//i[@class='fas fa-edit']")
 	WebElement MPEdit;
 	//table[@class='table table-bordered table-hover table-sm']/tbody/tr/td[9]//i[@class='fas fa-trash-alt']
@@ -90,6 +74,23 @@ public class ManageProductsPages {
 	WebElement subCategory;
 	@FindBy(xpath="//select[@id='w_unit']")
 	WebElement WeightUnit;
+	@FindBy(xpath="//li[@class='breadcrumb-item']/a")
+	WebElement home;
+
+	
+	public boolean isDisplayedValue( ) 
+	{
+	boolean Display =dashboard.isDisplayed();
+	return Display;
+	}
+	
+	
+	public boolean isDisplayed1() 
+	{
+	boolean value=guobj1.isDisplayedCommand(ListProducts);
+	return value;
+	}
+	 
 	
 	public void newProductAdd()
 	{
@@ -102,13 +103,13 @@ public class ManageProductsPages {
 	}
 	
 	
-	public void clickEdit() throws AWTException
+	public boolean clickEdit() throws AWTException
 	{
 	MPEdit.click();
 	Titleinput.clear();
-	Titleinput.sendKeys("Non-Veg Puffs");
+	Titleinput.sendKeys(Constants.ProductName);
 	guobj1.enterKey();
-	Assert.assertTrue(succesfullyUpdated.isDisplayed(),"Test Passed for Product edit button");	
+	return succesfullyUpdated.isDisplayed();	
 	}
 	
 	
@@ -124,41 +125,36 @@ public class ManageProductsPages {
 	return value;
 	}
 	
-	public void stock() throws InterruptedException
+	public String stock() throws InterruptedException
 	{
 	if(MPStockYes.isDisplayed()) 
 	{
 	MPStockYes.click();	
 	wait.eWToBeClickableCommand(driver, MPStockNo);
 	MPStockNo.click();
-	Assert.assertEquals(MPStockYes.getText(), "Yes");
 	}
 	else if(MPStockNo.isDisplayed())
 	{
 	MPStockNo.click();
 	wait.eWToBeClickableCommand(driver, MPStockYes);
-	MPStockYes.click();	
-	Assert.assertEquals(MPStockNo.getText(), "No");
-	}}
+	}
+	return MPStockYes.getText(); }
 	
-	public void stockstatus() throws InterruptedException
+	public String stockstatus() throws InterruptedException
 	{
 	if(MPStockUnlimited.isDisplayed()) 
 	{
 	MPStockUnlimited.click();
 	wait.eWToBeClickableCommand(driver, MPStocklimited);
 	MPStocklimited.click();
-	Assert.assertEquals(MPStockUnlimited.getText(), "Unlimited");
 	}
 	else if(MPStocklimited.isDisplayed()) 
 	{
 	MPStocklimited.click();
 	wait.eWToBeClickableCommand(driver, MPStockUnlimited);
 	MPStockUnlimited.click();
-	Assert.assertEquals(MPStocklimited.getText(), "Limited");
 	}
-		
-		
+	return MPStockUnlimited.getText();
 	}
 	
 	public boolean isEnabledDelete()
@@ -186,8 +182,7 @@ public class ManageProductsPages {
 	System.out.println(MPStocklimited.getText());
 	}
 	
-	@FindBy(xpath="//li[@class='breadcrumb-item']/a")
-	WebElement home;
+	
 	public void home()
 	{
 	if(home.isDisplayed())
@@ -195,9 +190,6 @@ public class ManageProductsPages {
 	home.click();	
 	}
 	}
-	
-	
-	
-	
+
 	
 }

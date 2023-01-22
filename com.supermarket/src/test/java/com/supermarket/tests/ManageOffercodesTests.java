@@ -31,54 +31,74 @@ public class ManageOffercodesTests extends BaseClass {
     
   
   @Test(priority=1)
-  public void offercodeMoreinfo() throws IOException {
-
-	  Hmobj=new HomePage(driver);
-	  MOCobj=new ManageOffercodesPages(driver);
-      Hmobj.navigateToHomePage();
-	  MOCobj.ManageOfferCodemoreinfo();
-	  Assert.assertEquals(MOCobj.getpageTitle(), Constants.offecrcodemoreinfo);
+  public void offercodeMoreinfo() throws IOException 
+  {
+  Hmobj=new HomePage(driver);
+  MOCobj=new ManageOffercodesPages(driver);
+  Hmobj.navigateToHomePage();
+  MOCobj.ManageOfferCodemoreinfo();
+  Assert.assertEquals(MOCobj.getpageTitle(), Constants.offecrcodemoreinfo);
   }
   
   @Test(priority=2)
   public void newOfferCode() throws AWTException, InterruptedException{
-	  MOCobj.newOfferCode();  
+  boolean newOfferCode= MOCobj.newOfferCode();
+  Assert.assertTrue(newOfferCode);
   }
 	  
   @Test(priority=3)
   public void offerCodeStatusCheck() throws InterruptedException
   {
-	  MOCobj.offercodeStatusCheck();  
+  String offerCodeStatus= MOCobj.offercodeStatusCheck();
+  Assert.assertEquals(offerCodeStatus, Constants.Activestatus);
   }
   
   @Test(priority=4)
-  public void editElement() throws AWTException
+  public void editElement() throws AWTException, IOException
   {
-	  MOCobj.editOffercode();
+  String editelement= MOCobj.editOffercode();
+  Assert.assertEquals(editelement, Constants.percentage);
   }
   
   @Test(priority=5)
-  public void sliderMoreinfo() {
-	  MOCobj.ManagesliderMoreinfo();
-	  Assert.assertEquals(MOCobj.getpageTitle(), Constants.slidermoreinfo);
+  public void offerCodeDeleteButton() throws AWTException {
+  boolean OfferCodeDeletestatus= MOCobj.deleteOffercode(); 
+  Assert.assertTrue(OfferCodeDeletestatus);  
   }
   
   @Test(priority=6)
-  public void sliderStatus() throws InterruptedException {
-	  MOCobj.sliderStatus(); 
+  public void sliderMoreinfo() {  
+  MOCobj.ManagesliderMoreinfo();
+  Assert.assertEquals(MOCobj.getpageTitle(), Constants.slidermoreinfo);
   }
   
   @Test(priority=7)
-  public void newSliderAddition() throws AWTException {
-	  MOCobj.newSlider();  
-	  
+  public void sliderStatus() throws InterruptedException {
+  String sliderStatus =MOCobj.sliderStatus(); 
+  Assert.assertEquals(sliderStatus, Constants.Activestatus);
   }
   
   @Test(priority=8)
+  public void newSliderAddition() throws AWTException {
+  boolean newSlider= MOCobj.newSlider(); 
+  Assert.assertTrue(newSlider);  
+  }
+  
+  
+  @Test(priority=9)
   public void home() {
-	  Hmobj.navigateBack();
+  Hmobj.navigateBack();
+  Assert.assertTrue(Hmobj.isDisplayedValue());
   }
  
+  @Test(priority=10)
+  public void sliderDeleteButton() throws AWTException {
+  boolean sliderDeletestatus= MOCobj.sliderDelete(); 
+  Assert.assertTrue(sliderDeletestatus);  
+  }
+  
+  
+  
   @BeforeTest
   public void beforeTest() {
   }
@@ -87,4 +107,4 @@ public class ManageOffercodesTests extends BaseClass {
   public void afterTest() {
   }
 
-}
+  }

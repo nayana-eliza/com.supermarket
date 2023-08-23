@@ -36,7 +36,7 @@ public class AdminUsersTests extends BaseClass{
   }
   
   
-  @Test(priority=3,enabled=false)
+  @Test(priority=3)
   public void passworddoubleDropdown() {
   String AdminUserPassword= Adobj.passworddoubleDropdown();
   Assert.assertEquals(AdminUserPassword, Constants.AdminUserspassword); 

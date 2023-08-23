@@ -28,7 +28,7 @@ public class ManageProductsTests  extends BaseClass{
 	
 	
   @Test(priority=1)
-	public void loginHomePage() throws IOException {
+	public void manageProductsMoreInfo() throws IOException {
      Lpobj = new LoginPages(driver);
      MLpobj = new ManageProductsPages(driver);
 	 Hmobj = new HomePage(driver);
@@ -38,26 +38,26 @@ public class ManageProductsTests  extends BaseClass{
 	 Assert.assertEquals(MLpobj.getpageTitle(), Constants.manageProductspage);
 	}
 
-	@Test(priority = 2,enabled = false)
+	@Test(priority = 5,enabled = false)
 	public void manageProductsEditButton() throws IOException, AWTException, InterruptedException 
 	{
 	MLpobj = new ManageProductsPages(driver);
 	Assert.assertTrue(MLpobj.clickEdit());
 	}
 
-	@Test(priority = 3)
+	@Test(priority =2 )
 	public void stockStatusButton() throws IOException, AWTException, InterruptedException 
 	{
 	Assert.assertEquals(MLpobj.stock(), Constants.yes);
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 3)
 	public void stockQuantityButton() throws IOException, AWTException, InterruptedException 
 	{
 	Assert.assertEquals(MLpobj.stockstatus(), Constants.Unlimitedstock);
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 4)
 	public void homePage() 
 	{
 	MLpobj.home();

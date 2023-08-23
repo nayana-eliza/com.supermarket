@@ -52,7 +52,7 @@ public class ManageOffercodesTests extends BaseClass {
   }
   
   @Test(priority=4)
-  public void editElement() throws AWTException, IOException
+  public void editOfferCode() throws AWTException, IOException
   {
   Assert.assertEquals(MOCobj.editOffercode(), Constants.percentage);
   }

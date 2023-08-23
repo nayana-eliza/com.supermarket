@@ -142,7 +142,7 @@ import com.supermarket.utilities.WaitUtility;
 	{
 	guobj1.clickCommand(offercodeEdit);
 	guobj1.clearCommand(percentage);
-	guobj1.sendkeysCommand(percentage, "40");
+	guobj1.sendkeysCommand(percentage, Constants.editpercentage);
 	guobj1.enterKey();
 	return percentageCell.getText();
 	}
@@ -181,7 +181,7 @@ import com.supermarket.utilities.WaitUtility;
 	{
 	guobj1.clickCommand(newSlider);
 	Choosefile.sendKeys(System.getProperty("user.dir"), "\\src\\main\\resources\\uploadFiles\\testing.jpg");
-	updateLink.sendKeys("https://www.amazon.in/");
+	updateLink.sendKeys(Constants.newSliderLink);
 	guobj1.enterKey();
 	return successAlert.isDisplayed();
 	}

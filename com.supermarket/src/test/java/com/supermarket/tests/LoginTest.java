@@ -44,7 +44,7 @@ public class LoginTest extends BaseClass {
   @Test(dataProvider="LoginData",dataProviderClass=DataProviderUtility.class)
   public void loginwithInValidCredentials(String username , String password) throws IOException
   {
-		  //excelUtility exobj = new excelUtility();
+		 
   Lpobj = new LoginPages(driver);    //sould write this ine first
   Lpobj.clearDetails();
   Lpobj.login(username,password);

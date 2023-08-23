@@ -20,7 +20,9 @@ public class Constants {
     		"Delivery Boy Informations Deleted Successfully";
     public static final String Unlimitedstock ="Unlimited";
     public static final String percentage ="40%";
+    public static final String editpercentage ="40";
     public static final String newOffercodeName ="testOfferCode";
     public static final String ProductName ="Non-Veg Puffs";
     public static final String yes="Yes";
+    public static final String newSliderLink= "https://www.amazon.in/";
 }
